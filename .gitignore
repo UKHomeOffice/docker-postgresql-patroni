@@ -1,0 +1,11 @@
+data/*
+*.pyc
+*.egg/
+*.egg-info/
+.cache/
+.coverage
+.eggs/
+build/
+coverage.xml
+junit.xml
+pgpass
