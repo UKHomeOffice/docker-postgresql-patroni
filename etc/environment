@@ -1,5 +1,6 @@
-export CLUSTER="postgres"
-export APIUSER="apiuser"
-export APIPASS="ChangeME"
-export ADMINUSER="postgres"
-export ADMINPASS="RootMe"
+export CLUSTER=${CLUSTER:-"postgres"}
+export APIUSER=${APIUSER:-"apiuser"}
+export APIPASS=${APIASS:-"ChangeME"}
+export ADMINUSER=${ADMINUSER:-"postgres"}
+export ADMINPASS=${ADMINPASS:-"RootMe"}
+
