@@ -1,5 +1,7 @@
+#!/bin/bash
+cat <<- EOF > /etc/confd/conf.d/haproxy.toml
 [template]
-prefix = "haproxy-discover"
+prefix = "${HAPROXY_KEY}/${CLUSTER}"
 keys = [
   "services"
 ]
@@ -11,3 +13,4 @@ dest = "/etc/haproxy/haproxy.cfg"
 
 check_cmd = "/usr/sbin/haproxy -c -f {{ .src }}"
 reload_cmd = "haproxy -f /etc/haproxy/haproxy.cfg -p /var/run/haproxy.pid -D -sf $(cat /var/run/haproxy.pid)"
+EOF

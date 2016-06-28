@@ -4,8 +4,8 @@ x=0
 
 while [ $x -le 1 ]
 do
-    etcdctl --endpoint ${ETCD_PROTOCOL}://${ETCD_CLUSTER}:${ETCD_PORT} mkdir "/haproxy-discover/services"
-    etcdctl --endpoint ${ETCD_PROTOCOL}://${ETCD_CLUSTER}:${ETCD_PORT} set "/haproxy-discover/services/app/upstreams/${HNAME}" "${DOCKER_IP}" -ttl 10
+    etcdctl --endpoint ${ETCD_PROTOCOL}://${ETCD_CLUSTER}:${ETCD_PORT} mkdir "/${HAPROXY_KEY}/${CLUSTER}/services"
+    etcdctl --endpoint ${ETCD_PROTOCOL}://${ETCD_CLUSTER}:${ETCD_PORT} set "/${HAPROXY_KEY}/${CLUSTER}/services/app/upstreams/${HNAME}" "${DOCKER_IP}" -ttl 10
     sleep 1
     x=0
 done
