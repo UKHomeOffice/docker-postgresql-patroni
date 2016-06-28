@@ -31,6 +31,7 @@ get_hostname
 if [ -f /srv/etc/environment ]; then
     source /srv/etc/environment
 fi 
+/etc/confd/conf.d/haproxy.toml.sh
 
 for file in ${SECRETS_DIR}/* ; do
   get_secrets $(basename ${file})

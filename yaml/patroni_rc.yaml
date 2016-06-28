@@ -1,10 +1,9 @@
----
 apiVersion: v1
 kind: ReplicationController
 metadata:
   name: patroni-controller
 spec:
-  replicas: 2
+  replicas: 3
   template:
     metadata:
       labels:
@@ -12,14 +11,18 @@ spec:
     spec:
       containers:
       - name: patroni
-        image: 192.168.64.1:5000/patroni
+        image: quay.io/ukhomeofficedigital/postgres-patroni:v0.2.2-rc4
         args:
-          - --etcd=192.168.64.6
+          - --etcd=192.168.1.11
         env:
           - name: ADMINUSER
             value: "postgres"
           - name: ADMINPASS
             value: "dbadmin"
+          - name: CLUSTER
+            value: pg
+          - name: SYNCHRONUS
+            value: "on"
         ports:
           - containerPort: 5000
           - containerPort: 5001
@@ -34,5 +37,5 @@ spec:
             name: data
       volumes:
         - hostPath:
-            path: /data
+            path: /data/pg
           name: data

@@ -94,7 +94,8 @@ RUN curl -#L https://github.com/kelseyhightower/confd/releases/download/v0.7.1/c
     mkdir -p /etc/confd/conf.d /etc/confd/templates
 
 ADD etc/haproxy.cfg.tpl /etc/confd/templates/haproxy.tmpl
-ADD etc/haproxy.toml /etc/confd/conf.d/haproxy.toml
+ADD etc/haproxy.toml /etc/confd/conf.d/haproxy.toml.sh
+RUN chmod +x /etc/confd/conf.d/haproxy.toml.sh
 
 ### Setting up a simple script that will serve as an entrypoint
 RUN touch                        \ 

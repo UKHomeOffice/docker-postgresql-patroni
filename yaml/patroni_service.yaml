@@ -4,22 +4,17 @@ metadata:
   name: patroni-service
 spec:
   ports:
-  - nodePort: 30001
-    port: 5000
+  - port: 5000
     targetPort: 5000
     protocol: TCP
     name: pgsql-master
-  - nodePort: 30002
-    port: 5001
+  - port: 5001
     targetPort: 5001
     protocol: TCP
     name: pgsql-slave
-  - nodePort: 30003
-    port: 8001
+  - port: 8001
     targetPort: 8001
     protocol: TCP
     name: patroni-api
   selector:
     app: patroni
-  sessionAffinity: None
-  type: NodePort
