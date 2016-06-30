@@ -3,4 +3,5 @@ export APIUSER=${APIUSER:-"apiuser"}
 export APIPASS=${APIASS:-"ChangeME"}
 export ADMINUSER=${ADMINUSER:-"postgres"}
 export ADMINPASS=${ADMINPASS:-"RootMe"}
-export SYNCHRONUS=${SYNCHRONUS:-"off"}
+export SYNCHRONOUS=${SYNCHRONOUS:-"off"}
+export DEBUG=${DEBUG:-"false"}

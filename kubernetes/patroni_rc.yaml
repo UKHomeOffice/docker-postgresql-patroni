@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: patroni
-        image: quay.io/ukhomeofficedigital/postgres-patroni:v0.2.2-rc4
+        image: quay.io/ukhomeofficedigital/postgres-patroni:v0.2.2-rc5
         args:
           - --etcd=192.168.1.11
         env:
@@ -20,8 +20,8 @@ spec:
           - name: ADMINPASS
             value: "dbadmin"
           - name: CLUSTER
-            value: pg
-          - name: SYNCHRONUS
+            value: "pg"
+          - name: SYNCHRONOUS
             value: "on"
         ports:
           - containerPort: 5000
