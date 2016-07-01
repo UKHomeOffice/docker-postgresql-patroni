@@ -116,6 +116,8 @@ exec /srv/bin/update_haproxy &
 if [ "$DEBUG" == "true" ]
 then
 	CONFD_OPTIONS+="-verbose=true -debug=true"
+else
+	CONFD_OPTIONS=""
 fi
 exec confd -interval 10 -node ${ETCD_CLUSTER}:${ETCD_PORT} -scheme="${ETCD_PROTOCOL}" $CONFD_OPTIONS &
 
