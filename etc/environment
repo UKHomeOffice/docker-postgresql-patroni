@@ -5,3 +5,5 @@ export ADMINUSER=${ADMINUSER:-"postgres"}
 export ADMINPASS=${ADMINPASS:-"RootMe"}
 export SYNCHRONOUS=${SYNCHRONOUS:-"off"}
 export DEBUG=${DEBUG:-"false"}
+export ETCD_TTL=${ETCD_TTL:-"10"}
+export ETCD_TIMEOUT=${ETCD_TIMEOUT:-"5s"}

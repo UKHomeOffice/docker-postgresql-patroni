@@ -35,6 +35,7 @@ Most can be seen in the Dockerfile, the most common are described below
 - ADMINUSER - the main admin user for the database
 - ADMINPASS - the password for the admin user
 - ETCD_TTL - the period before a postgres master election occurs after the current master dies
+- ETCD_TIMEOUT - the period before the call to etcd times out, this is described as a string eg. "2s - 2 seconds, 1m - 1 minute"
 
 Example usage:
 ```

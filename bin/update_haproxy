@@ -4,7 +4,7 @@ x=0
 
 while [ $x -le 1 ]
 do
-    etcdctl --endpoint ${ETCD_PROTOCOL}://${ETCD_CLUSTER}:${ETCD_PORT} set "/${HAPROXY_KEY}/${CLUSTER}/services/app/upstreams/${HNAME}" "${DOCKER_IP}" -ttl ${ETCD_TTL} 1>/dev/null
+    etcdctl --timeout "$ETCD_TIMEOUT" --endpoint ${ETCD_PROTOCOL}://${ETCD_CLUSTER}:${ETCD_PORT} set "/${HAPROXY_KEY}/${CLUSTER}/services/app/upstreams/${HNAME}" "${DOCKER_IP}" -ttl ${ETCD_TTL} 1>/dev/null
     sleep 1
     x=0
 done

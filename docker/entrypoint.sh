@@ -25,7 +25,6 @@ if [ -f /srv/functions/functions.sh ]; then
 fi
 
 export PATRONI_SCOPE=${PATRONI_SCOPE:-batman}
-export ETCD_TTL=${ETCD_TTL:-10}
 
 get_hostname
 
