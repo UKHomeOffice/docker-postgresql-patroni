@@ -57,5 +57,5 @@ postgresql:
     hot_standby: "on"
     max_replication_slots: 7
     wal_keep_segments: 5
-    synchronous_commit: "{{SYNCHRONUS}}"
+    synchronous_commit: "{{SYNCHRONOUS}}"
     synchronous_standby_names: "*"

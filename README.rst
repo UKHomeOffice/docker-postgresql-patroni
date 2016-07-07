@@ -26,6 +26,22 @@ For additional background info, see:
 * `PostgreSQL HA with Kubernetes and Patroni <https://www.youtube.com/watch?v=iruaCgeG7qs>`__, talk by Josh Berkus at KubeCon 2016 (video)
 * `Feb. 2016 Zalando Tech blog post <https://tech.zalando.de/blog/zalandos-patroni-a-template-for-high-availability-postgresql/>`__
 
+===================
+Running the service
+===================
+The docker container has a number of environment variables that are available for use:
+Most can be seen in the Dockerfile, the most common are described below
+- SYNCHRONOUS - set to on to make replication synchronous
+- ADMINUSER - the main admin user for the database
+- ADMINPASS - the password for the admin user
+- ETCD_TTL - the period before a postgres master election occurs after the current master dies
+- ETCD_TIMEOUT - the period before the call to etcd times out, this is described as a string eg. "2s - 2 seconds, 1m - 1 minute"
+
+Example usage:
+```
+docker run -t -i -e ADMINUSER="postgres" -e ADMINPASS="password" patroni-dev --etcd=192.168.99.100
+```
+
 ================
 Development Status
 ================

@@ -31,6 +31,8 @@ get_hostname
 if [ -f /srv/etc/environment ]; then
     source /srv/etc/environment
 fi 
+
+echo "Setting up haproxy confd template"
 /etc/confd/conf.d/haproxy.toml.sh
 
 for file in ${SECRETS_DIR}/* ; do
@@ -110,7 +112,14 @@ gosu ${PGUSER} mkdir -p ~postgres/.config/patroni
 gosu ${PGUSER} envtpl /srv/etc/patronictl.json.tpl --keep-template --allow-missing -o ~postgres/.config/patroni/patronictl.json
 gosu ${PGUSER} envtpl /srv/etc/patroni.yaml.tpl --keep-template --allow-missing -o /srv/etc/patroni.yaml
 exec /srv/bin/update_haproxy &
-exec confd -interval 10 -node ${ETCD_CLUSTER}:${ETCD_PORT} -scheme="${ETCD_PROTOCOL}" -verbose=true -debug=true &
+
+if [ "$DEBUG" == "true" ]
+then
+	CONFD_OPTIONS+="-verbose=true -debug=true"
+else
+	CONFD_OPTIONS=""
+fi
+exec confd -interval 10 -node ${ETCD_CLUSTER}:${ETCD_PORT} -scheme="${ETCD_PROTOCOL}" $CONFD_OPTIONS &
 
 WAIT=${CHEAT:-}
 if [ ! -z $WAIT ]
