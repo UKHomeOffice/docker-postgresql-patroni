@@ -1,4 +1,7 @@
 #!/bin/bash
+
+touch /var/run/haproxy.pid
+
 cat <<- EOF > /etc/confd/conf.d/haproxy.toml
 [template]
 prefix = "${HAPROXY_KEY}/${CLUSTER}"
