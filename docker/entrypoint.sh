@@ -119,7 +119,7 @@ then
 else
 	CONFD_OPTIONS=""
 fi
-exec confd -interval 10 -node ${ETCD_CLUSTER}:${ETCD_PORT} -scheme="${ETCD_PROTOCOL}" $CONFD_OPTIONS &
+exec confd -interval 10 -node ${ETCD_PROTOCOL}://${ETCD_CLUSTER}:${ETCD_PORT} $CONFD_OPTIONS &
 
 WAIT=${CHEAT:-}
 if [ ! -z $WAIT ]
